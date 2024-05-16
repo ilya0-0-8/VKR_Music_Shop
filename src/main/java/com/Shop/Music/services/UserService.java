@@ -25,32 +25,32 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoderService passwordEncoderService;
 
-//    public ResponseEntity<ListResponse> getAllUsers(int pageNo, int pageSize) {
-//
-//        Pageable pageable = PageRequest.of(pageNo, pageSize);
-//        Page<User> users = userRepository.findAll(pageable);
-//
-//        List<ReadRequest> userDTOList = new ArrayList<>();
-//
-//        for (User user : users.getContent()) {
-//            ReadRequest userDTO = new ReadRequest();
-//            userDTO.setId(user.getId());
-//            userDTO.setUsername(user.getUsername());
-//            userDTO.setPassword(user.getPassword());
-//            userDTO.setEmail(user.getEmail());
-//            userDTO.setNumber(user.getNumber());
-//            userDTO.setActive(user.isActive());
-//            userDTO.setRole(user.getRole());
-//
-//            userDTOList.add(userDTO);
-//        }
-//
-//        ListResponse userListDTO = new ListResponse();
-//        userListDTO.setUsers(userDTOList);
-//
-//        return new ResponseEntity<>(userListDTO, HttpStatus.OK);
-//
-//    }
+    public ResponseEntity<ListResponse> getAllUsers(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Page<User> users = userRepository.findAll(pageable);
+
+        List<ReadRequest> userDTOList = new ArrayList<>();
+
+        for (User user : users.getContent()) {
+            ReadRequest userDTO = new ReadRequest();
+            userDTO.setId(user.getId());
+            userDTO.setUsername(user.getUsername());
+            userDTO.setPassword(user.getPassword());
+            userDTO.setEmail(user.getEmail());
+            userDTO.setNumber(user.getNumber());
+            userDTO.setActive(user.isActive());
+            userDTO.setRole(user.getRole());
+
+            userDTOList.add(userDTO);
+        }
+
+        ListResponse userListDTO = new ListResponse();
+        userListDTO.setUsers(userDTOList);
+
+        return new ResponseEntity<>(userListDTO, HttpStatus.OK);
+
+    }
 
     public User save(User user) {
         return userRepository.save(user);
