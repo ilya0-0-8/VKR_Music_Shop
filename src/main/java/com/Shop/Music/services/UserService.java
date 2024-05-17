@@ -1,6 +1,9 @@
 package com.Shop.Music.services;
 
 
+import com.Shop.Music.dto.user.ListResponse;
+import com.Shop.Music.dto.user.ReadRequest;
+import com.Shop.Music.dto.user.UpdateRequest;
 import com.Shop.Music.models.User;
 import com.Shop.Music.models.enums.Role;
 import com.Shop.Music.repositories.UserRepository;
@@ -68,19 +71,19 @@ public class UserService {
         return save(user);
     }
 
-//    public ResponseEntity<String> update(UpdateRequest updateRequest)
-//    {
-//        User user = getCurrentUser();
-//
-//        user.setUsername(updateRequest.getUsername());
-//        user.setPassword(passwordEncoderService.passwordEncoder().encode(updateRequest.getPassword()));
-//        user.setEmail(updateRequest.getEmail());
-//        user.setNumber(updateRequest.getNumber());
-//
-//        userRepository.save(user);
-//
-//        return ResponseEntity.ok("Данные пользователя успешно обновлены");
-//    }
+    public ResponseEntity<String> update(UpdateRequest updateRequest)
+    {
+        User user = getCurrentUser();
+
+        user.setUsername(updateRequest.getUsername());
+        user.setPassword(passwordEncoderService.passwordEncoder().encode(updateRequest.getPassword()));
+        user.setEmail(updateRequest.getEmail());
+        user.setNumber(updateRequest.getNumber());
+
+        userRepository.save(user);
+
+        return ResponseEntity.ok("Данные пользователя успешно обновлены");
+    }
     public User getByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден "));

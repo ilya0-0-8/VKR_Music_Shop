@@ -23,24 +23,24 @@ public class UserController {
     @Operation(summary = "Получение списка пользователей")
     @GetMapping("/list/{pageNo}")
     @PreAuthorize("hasRole('ADMIN')")
-//    public ResponseEntity<ListResponse> getAllUsers(@PathVariable("pageNo") int pageNo)
-//    {
-//        int pageSize = 8;
-//        return userService.getAllUsers(pageNo, pageSize);
-//    }
+    public ResponseEntity<ListResponse> getAllUsers(@PathVariable("pageNo") int pageNo)
+    {
+        int pageSize = 8;
+        return userService.getAllUsers(pageNo, pageSize);
+    }
 
-//    @Operation(summary = "Обновление данных пользователя")
-//    @PutMapping("/update")
-//    public ResponseEntity<String> userUpdate(@RequestBody @Valid UpdateRequest updateRequest, BindingResult bindingResult)
-//    {
-//        if(bindingResult.hasErrors())
-//        {
-//            StringBuilder errorMessage = new StringBuilder();
-//            bindingResult.getAllErrors().forEach(error -> errorMessage.append(error.getDefaultMessage()).append(". "));
-//            return ResponseEntity.badRequest().body(errorMessage.toString());
-//        }
-//        return userService.update(updateRequest);
-//    }
+    @Operation(summary = "Обновление данных пользователя")
+    @PutMapping("/update")
+    public ResponseEntity<String> userUpdate(@RequestBody @Valid UpdateRequest updateRequest, BindingResult bindingResult)
+    {
+        if(bindingResult.hasErrors())
+        {
+            StringBuilder errorMessage = new StringBuilder();
+            bindingResult.getAllErrors().forEach(error -> errorMessage.append(error.getDefaultMessage()).append(". "));
+            return ResponseEntity.badRequest().body(errorMessage.toString());
+        }
+        return userService.update(updateRequest);
+    }
 
     @Operation(summary = "Блокировка пользователя")
     @PutMapping("/block/{userId}")

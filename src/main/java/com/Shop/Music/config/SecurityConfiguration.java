@@ -76,7 +76,7 @@ public class SecurityConfiguration {
 
                             .requestMatchers("/resume/list").permitAll()
                             .requestMatchers("/resume/myResume").permitAll()
-                            .requestMatchers("/resume/getResumeById").hasRole("EMPLOYER")
+                            //.requestMatchers("/resume/getResumeById").hasRole("EMPLOYER")
                             .requestMatchers("/resume/listResumeStatusOk").permitAll()
                             .requestMatchers("/resume/create").hasRole("USER")
                             .requestMatchers("/resume/update").hasRole("USER")
@@ -84,9 +84,9 @@ public class SecurityConfiguration {
                             .requestMatchers("/resume/setStatusOk").permitAll()
                             .requestMatchers("/resume/setStatusBlock").permitAll()
 
-                            .requestMatchers("/metrics/**").hasRole("EMPLOYER")
+                            //.requestMatchers("/metrics/**").hasRole("EMPLOYER")
 
-                            .requestMatchers("/responseToResume/**").hasRole("EMPLOYER")
+                            //.requestMatchers("/responseToResume/**").hasRole("EMPLOYER")
 
                             .requestMatchers("/message/**").permitAll()
 

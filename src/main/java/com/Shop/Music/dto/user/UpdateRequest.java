@@ -1,4 +1,4 @@
-package com.Shop.Music.dto.auth;
+package com.Shop.Music.dto.user;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
@@ -7,8 +7,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-@Schema(description = "Запрос на регистрацию")
-public class SignUpRequest {
+@Schema(description = "Запрос на обновление данных пользователя")
+public class UpdateRequest {
 
     @Schema(description = "Имя пользователя", example = "Ilya")
     @Size(min = 5, max = 30, message = "Имя пользователя должно содержать от 5 до 30 символов")
@@ -27,7 +27,5 @@ public class SignUpRequest {
     private String number;
 
     @Schema(description = "Пароль", example = "Jaconda_777")
-    @Size(max = 50, message = "Длина пароля должна быть не более 50 символов")
     private String password;
-
 }
